@@ -4,8 +4,26 @@ import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 
 const mapUrl = "https://maps.app.goo.gl/qVTfRzitdvMNno516";
+const contactEmail = "amichulis@yandex.ru";
+const contactUrl = `mailto:${contactEmail}?subject=${encodeURIComponent("Покупка участка в СНТ «Мебельщик»")}`;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const asset = (path: string) => `${basePath}${path}`;
+
+const shortRussianWords =
+  /(^|[\s(«„—–-])(а|без|бы|в|во|для|до|за|же|и|из|к|ко|ли|на|над|не|ни|о|об|обо|от|по|под|при|про|с|со|у)\s+(?=[А-Яа-яЁё0-9«„])/g;
+
+function fixHangingPrepositions(root: HTMLElement) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const textNodes: Text[] = [];
+
+  while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+
+  textNodes.forEach((node) => {
+    const parent = node.parentElement;
+    if (!parent || parent.closest("script, style")) return;
+    node.data = node.data.replace(shortRussianWords, "$1$2\u00A0");
+  });
+}
 
 type PetName = "timka" | "pirat" | "barsik";
 
@@ -36,6 +54,7 @@ const petStories: Record<PetName, { name: string; role: string; story: string; i
 export default function Home() {
   const [isKids, setIsKids] = useState(false);
   const restoreTimer = useRef<number | null>(null);
+  const pageRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     restoreTimer.current = window.setTimeout(() => {
@@ -45,6 +64,16 @@ export default function Home() {
     return () => {
       if (restoreTimer.current !== null) window.clearTimeout(restoreTimer.current);
     };
+  }, []);
+
+  useEffect(() => {
+    const page = pageRef.current;
+    if (!page) return;
+
+    fixHangingPrepositions(page);
+    const observer = new MutationObserver(() => fixHangingPrepositions(page));
+    observer.observe(page, { childList: true, subtree: true, characterData: true });
+    return () => observer.disconnect();
   }, []);
 
   function switchMode(nextKids: boolean) {
@@ -59,6 +88,7 @@ export default function Home() {
 
   return (
     <main
+      ref={pageRef}
       className={isKids ? "kids-mode" : "adult-mode"}
       style={{ "--hero-image": `url("${asset("/hero-production.webp")}")` } as CSSProperties}
     >
@@ -83,7 +113,7 @@ export default function Home() {
               <a href="#about">О товариществе</a>
               <a href="#infrastructure">Инфраструктура</a>
               <a href="#nature">Природа</a>
-              <a href="#join">Как вступить</a>
+              <a href="#join">Купить участок</a>
             </>
           )}
         </nav>
@@ -123,7 +153,7 @@ export default function Home() {
             от Владивостока. Лес, ручей и действующая инфраструктура.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#join">Стать членом СНТ</a>
+            <a className="button button-primary" href="#join">Узнать о покупке участка</a>
             <a className="text-link" href={mapUrl} target="_blank" rel="noreferrer">
               Посмотреть расположение <span aria-hidden="true">→</span>
             </a>
@@ -305,17 +335,29 @@ export default function Home() {
       </section>
 
       <section className="join section" id="join">
-        <div className="section-label"><span>04</span> Новым членам</div>
+        <div className="section-label"><span>04</span> Покупателям</div>
         <div className="section-heading">
-          <p className="eyebrow">Простой следующий шаг</p>
-          <h2>Как присоединиться</h2>
-          <p>Подойдёт тем, кто выбирает участок осознанно и готов участвовать в жизни территории.</p>
+          <p className="eyebrow">Как стать собственником</p>
+          <h2>Как купить участок</h2>
+          <p>
+            Посторонний человек не может напрямую стать членом СНТ. Сначала
+            необходимо купить участок у действующего собственника. После
+            оформления права собственности вопрос членства решается в
+            установленном порядке.
+          </p>
         </div>
         <ol className="steps">
           <li><span>1</span><div><h3>Посмотреть место</h3><p>Оценить подъезд, окружение и расположение участков.</p></div></li>
-          <li><span>2</span><div><h3>Уточнить варианты</h3><p>Связаться с правлением и узнать о доступных участках и условиях.</p></div></li>
-          <li><span>3</span><div><h3>Вступить в СНТ</h3><p>Оформить участок и стать частью товарищества.</p></div></li>
+          <li><span>2</span><div><h3>Уточнить предложения</h3><p>Узнать, продаёт ли кто-либо из действующих собственников свой участок.</p></div></li>
+          <li><span>3</span><div><h3>Оформить покупку</h3><p>Заключить сделку с собственником и зарегистрировать право на участок.</p></div></li>
         </ol>
+        <div className="buyer-contact">
+          <div>
+            <span>По вопросам покупки участков</span>
+            <a href={contactUrl}>{contactEmail}</a>
+          </div>
+          <a className="button button-primary" href={contactUrl}>Оставить заявку на покупку</a>
+        </div>
       </section>
 
       <section className="location section" id="location">
@@ -352,7 +394,8 @@ export default function Home() {
         <div className="faq-list">
           <details><summary>Можно ли подключить электричество?</summary><p>На территории есть электрическая инфраструктура. Доступная мощность — до 15 кВт на участок; порядок подключения уточняется в правлении.</p></details>
           <details><summary>Как добраться до товарищества?</summary><p>Точка СНТ указана на карте. Ориентировочное время в пути — 25 минут из Артёма и около часа из Владивостока. Подъездная дорога отремонтирована.</p></details>
-          <details><summary>Есть ли свободные участки?</summary><p>Актуальную информацию о продаже участков и вступлении в товарищество необходимо уточнять у правления СНТ.</p></details>
+          <details><summary>Как приобрести участок?</summary><p>Приобрести участок можно только у его действующего собственника. Чтобы узнать о возможных предложениях, напишите на <a href={contactUrl}>{contactEmail}</a>.</p></details>
+          <details><summary>Можно ли сразу стать членом СНТ?</summary><p>Нет. Посторонний человек не может вступить в СНТ без участка. Сначала необходимо приобрести участок у действующего собственника и оформить право собственности.</p></details>
         </div>
       </section>
 
@@ -363,7 +406,8 @@ export default function Home() {
         </div>
         <div className="footer-action">
           <p>Приезжайте посмотреть территорию, ручей, кедры и одну из сложившихся дачных улиц.</p>
-          <a className="button button-light" href={mapUrl} target="_blank" rel="noreferrer">Построить маршрут <span aria-hidden="true">↗</span></a>
+          <a className="footer-email" href={contactUrl}>{contactEmail}</a>
+          <a className="button button-light" href={contactUrl}>Оставить заявку на покупку <span aria-hidden="true">→</span></a>
         </div>
         <div className="footer-bottom">
           <span>Суражевка · Приморский край</span>
@@ -480,7 +524,8 @@ function KidsVersion() {
         <div>
           <p>До встречи в СНТ «Мебельщик»!</p>
           <h2>Приезжай знакомиться с дачей</h2>
-          <a className="kids-button light" href={mapUrl} target="_blank" rel="noreferrer">Показать взрослым карту <span aria-hidden="true">↗</span></a>
+          <a className="kids-contact-email" href={contactUrl}>{contactEmail}</a>
+          <a className="kids-button light" href={contactUrl}>Попросить взрослых написать <span aria-hidden="true">→</span></a>
         </div>
       </section>
     </>

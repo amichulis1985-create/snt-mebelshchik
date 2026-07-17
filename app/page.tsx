@@ -21,7 +21,8 @@ function fixHangingPrepositions(root: HTMLElement) {
   textNodes.forEach((node) => {
     const parent = node.parentElement;
     if (!parent || parent.closest("script, style")) return;
-    node.data = node.data.replace(shortRussianWords, "$1$2\u00A0");
+    const fixedText = node.data.replace(shortRussianWords, "$1$2\u00A0");
+    if (fixedText !== node.data) node.data = fixedText;
   });
 }
 
@@ -70,11 +71,9 @@ export default function Home() {
     const page = pageRef.current;
     if (!page) return;
 
-    fixHangingPrepositions(page);
-    const observer = new MutationObserver(() => fixHangingPrepositions(page));
-    observer.observe(page, { childList: true, subtree: true, characterData: true });
-    return () => observer.disconnect();
-  }, []);
+    const frame = window.requestAnimationFrame(() => fixHangingPrepositions(page));
+    return () => window.cancelAnimationFrame(frame);
+  }, [isKids]);
 
   function switchMode(nextKids: boolean) {
     if (restoreTimer.current !== null) {
@@ -482,7 +481,7 @@ function KidsVersion() {
           </div>
           <article className={`speech-card speech-${activePet}`} aria-live="polite">
             <span className="speech-name">Рассказывает {pet.name}</span>
-            <p>«{pet.story}»</p>
+            <p>«{pet.story.replace(shortRussianWords, "$1$2\u00A0")}»</p>
           </article>
         </div>
       </section>

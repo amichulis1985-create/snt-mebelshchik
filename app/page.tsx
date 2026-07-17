@@ -112,6 +112,7 @@ export default function Home() {
               <a href="#about">О товариществе</a>
               <a href="#infrastructure">Инфраструктура</a>
               <a href="#nature">Природа</a>
+              <a href="#birds">Птицы</a>
               <a href="#join">Купить участок</a>
             </>
           )}
@@ -246,7 +247,8 @@ export default function Home() {
             По территории СНТ протекает ручей, вдоль улиц растут взрослые кедры.
             Здесь много диких птиц; встречаются бурундуки и белки. Это часть
             обычной жизни товарищества, а не специально созданное озеленение.
-            В окружающем лесу растут грибы и обитают дикие животные.
+            На дачах и в окружающем лесу растут характерные для Приморья
+            деревья и лианы. В лесу встречаются грибы и обитают дикие животные.
           </p>
           <ul className="nature-list">
             <li><span>01</span>Ручей на территории СНТ</li>
@@ -258,6 +260,109 @@ export default function Home() {
         <blockquote>
           «Природа здесь начинается не за посёлком — она уже внутри СНТ»
         </blockquote>
+      </section>
+
+      <section className="flora section" id="flora" aria-labelledby="flora-title">
+        <div className="flora-heading">
+          <div>
+            <p className="eyebrow">Растения Приморья</p>
+            <h2 id="flora-title">Дальневосточный сад и лес</h2>
+          </div>
+          <p>
+            Помимо кедра, на дачных участках и в окружающем лесу растут бархат
+            амурский, орех маньчжурский, диморфант, липа, ясень и лиственница.
+            Стволы и кроны оплетают лианы лимонника китайского, актинидии и
+            дикого винограда.
+          </p>
+        </div>
+
+        <figure className="flora-illustration">
+          <img
+            src={asset("/flora-surazhevka.webp")}
+            alt="Дальневосточные деревья и лианы: кедр, бархат амурский, лимонник, актинидия, дикий виноград, орех маньчжурский, диморфант, липа, ясень и лиственница"
+            loading="lazy"
+          />
+          <figcaption>Деревья и лианы, которые растут на дачах и в лесу</figcaption>
+        </figure>
+
+        <div className="flora-groups">
+          <article>
+            <span>Деревья</span>
+            <ul>
+              <li>Кедр</li>
+              <li>Бархат амурский</li>
+              <li>Орех маньчжурский</li>
+              <li>Диморфант</li>
+              <li>Липа</li>
+              <li>Ясень</li>
+              <li>Лиственница</li>
+            </ul>
+          </article>
+          <article>
+            <span>Лианы</span>
+            <ul>
+              <li>Лимонник китайский</li>
+              <li>Актинидия</li>
+              <li>Дикий виноград</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section className="birds section" id="birds" aria-labelledby="birds-title">
+        <div className="birds-heading">
+          <div>
+            <p className="eyebrow">Пернатые соседи</p>
+            <h2 id="birds-title">Птицы Суражевки</h2>
+          </div>
+          <p>
+            На территории СНТ и рядом с ней встречаются самые разные птицы.
+            Среди тех, которых здесь наблюдали, — желтогорлая овсянка, пёстрый
+            дятел, сойка, голубая сорока, воробьи и поползень.
+          </p>
+        </div>
+
+        <figure className="birds-illustration">
+          <img
+            src={asset("/birds-surazhevka.webp")}
+            alt="Желтогорлая овсянка, пёстрый дятел, сойка, голубая сорока, воробей и поползень"
+            loading="lazy"
+          />
+          <figcaption>Шесть птиц, которых встречали в Суражевке</figcaption>
+        </figure>
+
+        <div className="bird-list">
+          <article className="bird-card">
+            <span>01</span>
+            <h3>Желтогорлая овсянка</h3>
+            <p>Небольшая лесная птица с ярким жёлтым горлом и тёмным рисунком на голове.</p>
+          </article>
+          <article className="bird-card">
+            <span>02</span>
+            <h3>Пёстрый дятел</h3>
+            <p>Его легко узнать по контрастному оперению и дробному стуку по стволу.</p>
+          </article>
+          <article className="bird-card">
+            <span>03</span>
+            <h3>Сойка</h3>
+            <p>Заметная лесная птица с голубыми полосками на крыльях и громким голосом.</p>
+          </article>
+          <article className="bird-card">
+            <span>04</span>
+            <h3>Голубая сорока</h3>
+            <p>Подвижная птица с тёмной шапочкой и длинным голубовато-серым хвостом.</p>
+          </article>
+          <article className="bird-card">
+            <span>05</span>
+            <h3>Воробьи</h3>
+            <p>Знакомые маленькие соседи, которых можно заметить возле домов и садов.</p>
+          </article>
+          <article className="bird-card">
+            <span>06</span>
+            <h3>Поползень</h3>
+            <p>Ловко передвигается по стволу даже вниз головой; узнаваем по тёмной полосе через глаз.</p>
+          </article>
+        </div>
       </section>
 
       <section className="local-history section" aria-labelledby="mine-title">
@@ -492,6 +597,65 @@ function KidsVersion() {
           <h2 id="hunt-title">Что найдёшь ты?</h2>
           <span>На этих фотографиях всё настоящее — снято в СНТ «Мебельщик».</span>
         </div>
+
+        <div className="kids-flora-guide" aria-labelledby="kids-flora-title">
+          <div className="kids-flora-copy">
+            <p>Лесной гербарий</p>
+            <h3 id="kids-flora-title">Листья, шишки и ягоды</h3>
+            <span>
+              На дачах и в лесу растут разные деревья и лианы. Попробуй найти
+              их листья, кору или плоды, но ничего не срывай без разрешения.
+            </span>
+          </div>
+          <figure className="kids-flora-picture">
+            <img
+              src={asset("/flora-surazhevka.webp")}
+              alt="Дальневосточные деревья и лианы Суражевки"
+              loading="lazy"
+            />
+            <figcaption>Сколько разных листьев и плодов ты сможешь заметить?</figcaption>
+          </figure>
+          <ul className="kids-flora-list">
+            <li>Кедр</li>
+            <li>Бархат амурский</li>
+            <li>Лимонник китайский</li>
+            <li>Актинидия</li>
+            <li>Дикий виноград</li>
+            <li>Орех маньчжурский</li>
+            <li>Диморфант</li>
+            <li>Липа</li>
+            <li>Ясень</li>
+            <li>Лиственница</li>
+          </ul>
+        </div>
+
+        <div className="kids-bird-guide" aria-labelledby="kids-birds-title">
+          <div className="kids-bird-copy">
+            <p>Птичье задание</p>
+            <h3 id="kids-birds-title">Найди всех шестерых!</h3>
+            <span>
+              Этих птиц встречали в Суражевке. Рассмотри рисунок, а потом
+              попробуй узнать каждую птицу во время тихой прогулки со взрослыми.
+            </span>
+          </div>
+          <figure className="kids-bird-picture">
+            <img
+              src={asset("/birds-surazhevka.webp")}
+              alt="Желтогорлая овсянка, пёстрый дятел, сойка, голубая сорока, воробей и поползень"
+              loading="lazy"
+            />
+            <figcaption>Смотри внимательно: у каждой птицы свои цвет, хвост и клюв</figcaption>
+          </figure>
+          <ol className="kids-bird-list">
+            <li><b>01</b><div><strong>Желтогорлая овсянка</strong><span>Ищи жёлтое горлышко</span></div></li>
+            <li><b>02</b><div><strong>Пёстрый дятел</strong><span>Прислушайся к стуку</span></div></li>
+            <li><b>03</b><div><strong>Сойка</strong><span>Заметь голубые полоски</span></div></li>
+            <li><b>04</b><div><strong>Голубая сорока</strong><span>Узнай длинный хвост</span></div></li>
+            <li><b>05</b><div><strong>Воробьи</strong><span>Посмотри возле домов</span></div></li>
+            <li><b>06</b><div><strong>Поползень</strong><span>Найди птицу вниз головой</span></div></li>
+          </ol>
+        </div>
+
         <div className="hunt-grid">
           <figure><img src={asset("/gallery-squirrel.webp")} alt="Белка на дереве" /><figcaption><b>01</b> Найди белку</figcaption></figure>
           <figure><img src={asset("/gallery-cedar.webp")} alt="Кедр в СНТ" /><figcaption><b>02</b> Рассмотри кедр</figcaption></figure>

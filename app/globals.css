@@ -133,6 +133,32 @@ h2 { margin: 0; font-size: clamp(43px, 5vw, 72px); line-height: 1.02; }
 .nature-list span { color: var(--sun); margin-right: 22px; font: italic 15px Georgia, serif; }
 .nature blockquote { margin: 0 0 36px; max-width: 420px; font: italic 400 clamp(29px, 3vw, 46px)/1.18 Georgia, serif; color: var(--cream); }
 
+.flora { background: var(--paper); }
+.flora-heading { display: grid; grid-template-columns: 1.08fr .92fr; gap: 7vw; align-items: end; max-width: 1320px; margin: 0 auto 52px; }
+.flora-heading > p { max-width: 600px; margin: 0 0 8px; color: #596158; font-size: 18px; line-height: 1.7; }
+.flora-illustration { max-width: 1320px; margin: 0 auto; position: relative; overflow: hidden; border-radius: 25px; background: #d5dfcf; box-shadow: 0 22px 55px rgba(31,57,43,.12); }
+.flora-illustration img { width: 100%; aspect-ratio: 1.85 / 1; display: block; object-fit: cover; }
+.flora-illustration figcaption { position: absolute; left: 22px; bottom: 20px; padding: 11px 15px; border-radius: 10px; background: rgba(24,61,49,.88); color: white; font-size: 13px; backdrop-filter: blur(8px); }
+.flora-groups { display: grid; grid-template-columns: 1.35fr .65fr; gap: 14px; max-width: 1320px; margin: 22px auto 0; }
+.flora-groups article { padding: 25px 27px 29px; border: 1px solid var(--line); border-radius: 17px; background: var(--cream); }
+.flora-groups article > span { color: var(--terracotta); font-size: 11px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+.flora-groups ul { list-style: none; display: flex; flex-wrap: wrap; gap: 9px; padding: 0; margin: 18px 0 0; }
+.flora-groups li { padding: 9px 12px; border-radius: 999px; background: rgba(24,61,49,.08); color: var(--green); font-size: 14px; }
+
+.birds { background: #eef0e6; }
+.birds-heading { display: grid; grid-template-columns: 1.08fr .92fr; gap: 7vw; align-items: end; max-width: 1320px; margin: 0 auto 52px; }
+.birds-heading > p { max-width: 580px; margin: 0 0 8px; color: #596158; font-size: 18px; line-height: 1.7; }
+.birds-illustration { max-width: 1320px; margin: 0 auto; position: relative; overflow: hidden; border-radius: 25px; background: #d5dfcf; box-shadow: 0 22px 55px rgba(31,57,43,.12); }
+.birds-illustration img { width: 100%; aspect-ratio: 1.85 / 1; display: block; object-fit: cover; }
+.birds-illustration figcaption { position: absolute; left: 22px; bottom: 20px; padding: 11px 15px; border-radius: 10px; background: rgba(24,61,49,.88); color: white; font-size: 13px; backdrop-filter: blur(8px); }
+.bird-list { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1320px; margin: 24px auto 0; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: rgba(251,247,239,.72); }
+.bird-card { min-width: 0; padding: 26px 23px 29px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.bird-card:nth-child(3n) { border-right: 0; }
+.bird-card:nth-last-child(-n+3) { border-bottom: 0; }
+.bird-card > span { color: var(--terracotta); font: italic 14px Georgia, serif; }
+.bird-card h3 { margin: 20px 0 12px; color: var(--green); font: 400 24px/1.15 Georgia, serif; }
+.bird-card p { margin: 0; color: #62695f; font-size: 14px; line-height: 1.6; }
+
 .local-history { display: grid; grid-template-columns: .7fr 1.55fr .75fr; gap: clamp(34px, 6vw, 90px); align-items: start; background: var(--cream); }
 .local-history-copy h2 { max-width: 700px; }
 .local-history-copy > p:last-child { max-width: 720px; margin: 30px 0 0; color: #555b52; font-size: 18px; line-height: 1.7; }
@@ -247,6 +273,30 @@ h2 { margin: 0; font-size: clamp(43px, 5vw, 72px); line-height: 1.02; }
 .speech-card p { margin: 16px 0 0; color: var(--kids-ink); font-size: clamp(21px, 2.1vw, 30px); font-weight: 700; line-height: 1.5; }
 
 .kids-nature { padding: clamp(85px, 9vw, 135px) clamp(24px, 5vw, 78px); background: #fff9e5; }
+.kids-flora-guide { max-width: 1240px; margin: 0 auto 72px; padding: clamp(25px, 4vw, 48px); border: 3px solid var(--kids-ink); border-radius: 36px; background: var(--kids-mint); box-shadow: 12px 12px 0 #9bcfc0; }
+.kids-flora-copy { max-width: 820px; margin: 0 auto 32px; text-align: center; }
+.kids-flora-copy > p { margin: 0 0 10px; color: var(--kids-orange); font-size: 12px; font-weight: 900; letter-spacing: .15em; text-transform: uppercase; }
+.kids-flora-copy h3 { margin: 0; color: var(--kids-ink); font-size: clamp(38px, 4.7vw, 67px); line-height: 1; }
+.kids-flora-copy > span { display: block; max-width: 670px; margin: 19px auto 0; color: #506960; font-size: 17px; line-height: 1.6; }
+.kids-flora-picture { margin: 0; position: relative; overflow: hidden; border: 5px solid white; border-radius: 27px; background: #cadfc9; box-shadow: 0 17px 38px rgba(48,92,78,.14); }
+.kids-flora-picture img { width: 100%; aspect-ratio: 1.85 / 1; display: block; object-fit: cover; }
+.kids-flora-picture figcaption { position: absolute; left: 18px; right: 18px; bottom: 17px; width: fit-content; max-width: calc(100% - 36px); padding: 10px 14px; border-radius: 12px; background: rgba(255,249,229,.94); color: var(--kids-ink); font-size: 13px; font-weight: 900; }
+.kids-flora-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; padding: 0; margin: 20px 0 0; }
+.kids-flora-list li { padding: 10px 13px; border: 2px solid rgba(23,63,53,.16); border-radius: 999px; background: white; color: var(--kids-ink); font-size: 13px; font-weight: 900; }
+.kids-bird-guide { max-width: 1240px; margin: 0 auto 72px; padding: clamp(25px, 4vw, 48px); border: 3px solid var(--kids-ink); border-radius: 36px; background: #dff0f5; box-shadow: 12px 12px 0 var(--kids-yellow); }
+.kids-bird-copy { max-width: 780px; margin: 0 auto 32px; text-align: center; }
+.kids-bird-copy > p { margin: 0 0 10px; color: var(--kids-orange); font-size: 12px; font-weight: 900; letter-spacing: .15em; text-transform: uppercase; }
+.kids-bird-copy h3 { margin: 0; color: var(--kids-ink); font-size: clamp(38px, 4.7vw, 67px); line-height: 1; }
+.kids-bird-copy > span { display: block; max-width: 650px; margin: 19px auto 0; color: #506960; font-size: 17px; line-height: 1.6; }
+.kids-bird-picture { margin: 0; position: relative; overflow: hidden; border: 5px solid white; border-radius: 27px; background: #cadfc9; box-shadow: 0 17px 38px rgba(48,92,78,.14); }
+.kids-bird-picture img { width: 100%; aspect-ratio: 1.85 / 1; display: block; object-fit: cover; }
+.kids-bird-picture figcaption { position: absolute; left: 18px; right: 18px; bottom: 17px; width: fit-content; max-width: calc(100% - 36px); padding: 10px 14px; border-radius: 12px; background: rgba(255,249,229,.94); color: var(--kids-ink); font-size: 13px; font-weight: 900; }
+.kids-bird-list { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0; margin: 19px 0 0; }
+.kids-bird-list li { min-width: 0; display: flex; gap: 10px; padding: 15px 13px; border-radius: 16px; background: white; color: var(--kids-ink); }
+.kids-bird-list b { flex: 0 0 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--kids-yellow); font-size: 10px; }
+.kids-bird-list strong, .kids-bird-list span { display: block; }
+.kids-bird-list strong { font-size: 14px; line-height: 1.25; }
+.kids-bird-list span { margin-top: 5px; color: #688078; font-size: 11px; line-height: 1.35; }
 .hunt-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: minmax(360px, 42vw); gap: 18px; max-width: 1240px; margin: 0 auto; }
 .hunt-grid figure { margin: 0; position: relative; overflow: hidden; border-radius: 32px; background: #d9ead2; }
 .hunt-grid img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .5s; }
@@ -286,6 +336,12 @@ h2 { margin: 0; font-size: clamp(43px, 5vw, 72px); line-height: 1.02; }
   .history-card { grid-column: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-left: 0; border-top: 1px solid var(--line); padding: 30px 0 0; }
   .history-card > p { margin: 6px 0; }.history-rule { display: none; }
   .dacha-example { grid-template-columns: 1fr 1fr; }
+  .bird-list { grid-template-columns: repeat(2, 1fr); }
+  .bird-card:nth-child(3n) { border-right: 1px solid var(--line); }
+  .bird-card:nth-child(2n) { border-right: 0; }
+  .bird-card:nth-last-child(-n+3) { border-bottom: 1px solid var(--line); }
+  .bird-card:nth-last-child(-n+2) { border-bottom: 0; }
+  .kids-bird-list { grid-template-columns: repeat(2, 1fr); }
   .local-history { grid-template-columns: .7fr 1.5fr; }
   .history-note { grid-column: 2; }
   .kids-hero { grid-template-columns: 1fr; }
@@ -333,6 +389,21 @@ h2 { margin: 0; font-size: clamp(43px, 5vw, 72px); line-height: 1.02; }
   .feature-card h3 { margin-top: 24px; }
   .nature { min-height: 850px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 52px; background: linear-gradient(0deg, rgba(23,45,35,.92) 0%, rgba(23,45,35,.66) 63%, rgba(23,45,35,.12) 100%), var(--hero-image) 62% center / cover no-repeat; }
   .nature blockquote { margin: 0; }
+  .flora-heading { display: block; margin-bottom: 34px; }
+  .flora-heading > p { margin-top: 24px; }
+  .flora-illustration { border-radius: 15px; }
+  .flora-illustration img { min-height: 380px; aspect-ratio: auto; object-position: center; }
+  .flora-illustration figcaption { left: 12px; bottom: 12px; max-width: calc(100% - 24px); font-size: 11px; }
+  .flora-groups { display: block; margin-top: 14px; }
+  .flora-groups article + article { margin-top: 10px; }
+  .birds-heading { display: block; margin-bottom: 34px; }
+  .birds-heading > p { margin-top: 24px; }
+  .birds-illustration { border-radius: 15px; }
+  .birds-illustration img { min-height: 380px; aspect-ratio: auto; object-position: center; }
+  .birds-illustration figcaption { left: 12px; bottom: 12px; max-width: calc(100% - 24px); font-size: 11px; }
+  .bird-list { display: block; margin-top: 14px; border-radius: 14px; }
+  .bird-card, .bird-card:nth-child(2n), .bird-card:nth-child(3n), .bird-card:last-child { border-right: 0; border-bottom: 1px solid var(--line); }
+  .bird-card:last-child { border-bottom: 0; }
   .local-history { display: block; }
   .local-history .section-label { margin-bottom: 52px; }
   .history-note { margin-top: 38px; }
@@ -370,6 +441,15 @@ h2 { margin: 0; font-size: clamp(43px, 5vw, 72px); line-height: 1.02; }
   .story-pet.active { transform: translateY(-5px); }
   .speech-card { margin-top: 25px; border-radius: 23px; }
   .speech-card p { font-size: 19px; }
+  .kids-flora-guide { margin-bottom: 58px; padding: 20px; border-width: 2px; border-radius: 25px; box-shadow: 7px 7px 0 #9bcfc0; }
+  .kids-flora-picture { border-width: 3px; border-radius: 18px; }
+  .kids-flora-picture img { min-height: 330px; aspect-ratio: auto; object-fit: cover; }
+  .kids-flora-picture figcaption { left: 9px; right: 9px; bottom: 9px; max-width: calc(100% - 18px); font-size: 11px; }
+  .kids-bird-guide { margin-bottom: 58px; padding: 20px; border-width: 2px; border-radius: 25px; box-shadow: 7px 7px 0 var(--kids-yellow); }
+  .kids-bird-picture { border-width: 3px; border-radius: 18px; }
+  .kids-bird-picture img { min-height: 330px; aspect-ratio: auto; object-fit: cover; }
+  .kids-bird-picture figcaption { left: 9px; right: 9px; bottom: 9px; max-width: calc(100% - 18px); font-size: 11px; }
+  .kids-bird-list { grid-template-columns: 1fr; gap: 8px; }
   .hunt-grid { grid-template-columns: 1fr; grid-auto-rows: 420px; gap: 11px; }
   .hunt-grid figure { border-radius: 22px; }
   .rules-list { margin-top: 15px; }
